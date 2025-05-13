@@ -10,12 +10,26 @@ async function fetchPlaylist() {
 
   const genreMap = {
     "Måneskin": "Rock",
+    "The Beatles": "Rock",
+    "Red Hot Chili Peppers": "Rock",
+    "Nirvana": "Rock",
+    "The Killers": "Rock",
+    "Queen": "Rock",
     "Bad Bunny": "Reggaeton",
-    "Tom Morello": "Rock",
-    "Ed Sheeran": "Pop",
-    "The Weeknd": "Pop",
-    "Omar Courtz": "Reggaeton"
-
+    "Chappell Roan": "Pop",
+    "Bad Bunny": "Pop",
+    "Lady Gaga": "Pop",
+    "Billie Eilish": "Pop",
+    "Bee Gees": "Pop",
+    "Lola Young": "Pop",
+    "Sabrina Carpenter": "Pop",
+    "Aretha Franklin": "Pop",
+    "Jungle": "Pop",
+    "Tash Sultana": "Pop",
+    "Stromae": "Pop",
+    "Stray Kids": "K-pop",
+    "Doechii": "rap",
+    "Snoop Dogg": "rap",
   };
 
   data.forEach(entry => {
@@ -36,10 +50,9 @@ async function fetchPlaylist() {
 
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td>${index++}</td>
-        <td>${track.name}</td>
-        <td>${artistName}</td>
-        <td>${duration}</td>
+      <td>${track.name}</td>
+      <td>${artistName}</td>
+      <td>${duration}</td>
       `;
       tbody.appendChild(row);
     });
@@ -55,9 +68,7 @@ async function fetchPlaylist() {
     data: {
       labels: sortedArtists.map(e => e[0]),
       datasets: [{
-        label: "Nombre de morceaux",
-        data: sortedArtists.map(e => e[1]),
-        backgroundColor: "#36a2eb"
+      data: sortedArtists.map(e => e[1]),
       }]
     },
     options: {
@@ -75,7 +86,6 @@ async function fetchPlaylist() {
     data: {
       labels: Object.keys(genreCount),
       datasets: [{
-        label: "Genres",
         data: Object.values(genreCount),
         backgroundColor: [
           "#ff6384", "#36a2eb", "#ffce56", "#4bc0c0", "#9966ff", "#ff9f40"
