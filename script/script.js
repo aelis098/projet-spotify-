@@ -47,13 +47,23 @@ async function fetchPlaylist() {
       const durationMin = Math.floor(durationMs / 60000);
       const durationSec = String(Math.floor((durationMs % 60000) / 1000)).padStart(2, '0');
       const duration = `${durationMin}:${durationSec}`;
+      const albumName = entry.album?.name || "Album inconnu";
 
       const row = document.createElement("tr");
       row.innerHTML = `
       <td>${track.name}</td>
       <td>${artistName}</td>
-      <td>${duration}</td>
-      `;
+      <td>${albumName}</td>
+      <td>
+      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal"
+      data-track="${track.name}"
+      data-artist="${artistName}"
+      data-album="${albumName}"
+    >
+      Détails
+    </button>
+  </td>
+`;
       tbody.appendChild(row);
     });
   });
